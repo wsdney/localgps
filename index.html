@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa Interativo - GPS - Grupos Pequenos Shekinah</title>
+  <title>Mapa Interativo - GPS - Grupos Pequenos Shekinah.</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,12 +20,15 @@
       padding: 15px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
     }
     .section img {
       max-width: 120px;
       height: auto;
       float: right;
       margin-left: 15px;
+      cursor: pointer;
+      transition: 0.3s;
     }
     .section h2 {
       margin-top: 0;
@@ -50,17 +53,56 @@
     .clear {
       clear: both;
     }
+
+    /* Popup styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .popup-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .popup-overlay:target {
+      display: block;
+    }
+    .close-popup {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <h1>📍 Mapa Interativo - GPS - Grupos Pequenos Shekinah</h1>
+  <h1>📍 Mapa Interativo - GPS - Grupos Pequenos Shekinah.</h1>
 
   <!-- Espaço da Igreja -->
   <div class="section">
-    <img src="logo_shekinah_azul.png" alt="Logo Igreja">
+    <a href="#popup-igreja">
+      <img src="logo_shekinah_azul.png" alt="Logo Igreja">
+    </a>
     <h2>Igreja Shekinah - A Igreja do Leão</h2>
-    <p><strong>Endereço:</strong> Av. América, 3080 – Zona 5 – Cianorte – PR</p>
+    <p><strong>Endereço:</strong> Av. América, 3080 – Zona 5 – Cianorte – Paraná</p>
     <p><strong>Atividades:</strong> Dias de Cultos: Quarta-Feira - Culto nas casas - GPS - Grupos Pequenos Shekinah - Horário 20:00 | Quinta-Feira - GPS Master - Horário 19:00 | Sábado - Avija Jovem - Horário 20:00 | Domingo - Estudo Bíblico Horário 09:00 - Culto da Família - Horário 19:30 |</p>
     <p><strong>Versículo:</strong> “O Leão da tribo de Judá venceu.” – Apocalipse 5:5</p>
     <a class="btn" href="https://www.google.com/maps/place/Av.+América,+3080,+Cianorte,+PR" target="_blank">Ver Local</a>
@@ -68,35 +110,58 @@
     <div class="clear"></div>
   </div>
 
-  <!-- Espaços para os 20 GPS -->
-  <!-- Copie e edite esse bloco para cada célula -->
+  <!-- Popup da Igreja -->
+  <div id="popup-igreja" class="popup-overlay">
+    <a href="#" class="close-popup">&times;</a>
+    <div class="popup-content">
+      <img src="logo_shekinah_azul.png" alt="Logo Igreja em destaque">
+    </div>
+  </div>
+
+  <!-- Exemplo de GPS (repita e edite para os 20 grupos) -->
   <div class="section">
-    <img src="Filhos do Deus Altíssimo.PNG" alt="Logo GPS">
+    <a href="#popup-gps1">
+      <img src="Filhos do Deus Altíssimo.PNG" alt="Logo GPS">
+    </a>
     <h2>GPS – Filhos do Deus Altíssimo</h2>
-    <p><strong>Endereço:</strong> Rua Concórdia, 406 – Jardim Verdes Campos – Cianorte – PR
-    <p><strong>Descrição:</strong>Grupo familiar com foco em discipulado e comunhão. | Reunião todas as quartas-feiras - Horário 20:00</p>
+    <p><strong>Endereço:</strong> Rua Concórdia, 406 – Jardim Verdes Campos – Cianorte – Paraná</p>
+    <p><strong>Descrição:</strong> Grupo familiar com foco em discipulado e comunhão. | Reunião todas as quartas-feiras - Horário 20:00</p>
     <p><strong>Versículo:</strong> “Mas a todos quantos o receberam, deu-lhes o poder de serem feitos filhos de Deus.” – João 1:12</p>
     <a class="btn" href="https://www.google.com/maps/place/Rua+Concórdia,+406,+Cianorte,+PR" target="_blank">Ver Local</a>
     <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Rua+Concórdia,+406,+Cianorte,+PR" target="_blank">Como Chegar</a>
     <div class="clear"></div>
   </div>
+
+  <!-- Popup do GPS -->
+  <div id="popup-gps1" class="popup-overlay">
+    <a href="#" class="close-popup">&times;</a>
+    <div class="popup-content">
+      <img src="Filhos do Deus Altíssimo.PNG" alt="Logo GPS em destaque">
+    </div>
+  </div>
   
-  
-   <div class="section">
-    <img src="Tempo de Florecer.jpeg" alt="Logo GPS">
+    <div class="section">
+    <a href="#popup-gps2">
+      <img src="Tempo de Florecer.jpeg" alt="Logo GPS">
+    </a>
     <h2>GPS - Tempo de Florescer</h2>
     <p><strong>Endereço:</strong> Rua Mundo Novo, 147 - Residencial Bourbon  - Cianorte - Paraná.</p>
     <p><strong>Descrição:</strong> Grupo familiar com foco em discipulado e comunhão. | Reunião todas as quartas-feiras - Horário 20:00</p>
-    <p><strong>Versículo:</strong> “¹² Flores aparecem sobre a terra, e chegou o tempo de cantar; já se ouve em nossa terra o arrulhar dos pombos.
-¹³ A figueira produz os primeiros frutos; as vinhas florescem e espalham sua fragrância. Levante-se, venha, minha querida; minha bela, venha comigo.” – Cânticos 2:11-12</p>
+    <p><strong>Versículo:</strong> “Mas a todos quantos o receberam, deu-lhes o poder de serem feitos filhos de Deus.” – João 1:12</p>
     <a class="btn" href="https://www.google.com/maps/place/Rua+Mundo+Novo,+147,+Cianorte,+PR" target="_blank">Ver Local</a>
     <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Mundo+Novo,+147,+Cianorte,+PR" target="_blank">Como Chegar</a>
     <div class="clear"></div>
   </div>
 
-  <!-- Repita o bloco acima para os outros 19 GPS -->
+  <!-- Popup do GPS -->
+  <div id="popup-gps2" class="popup-overlay">
+    <a href="#" class="close-popup">&times;</a>
+    <div class="popup-content">
+      <img src="Tempo de Florecer.jpeg" alt="Logo GPS em destaque">
+    </div>
+  </div>
+
+  <!-- Repita os blocos acima para os outros 19 GPS, mudando o ID e nome da imagem -->
 
 </body>
 </html>
-
-
